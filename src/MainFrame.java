@@ -49,7 +49,7 @@ public class MainFrame extends JFrame {
     private static final int MEDIUM_GAP = 10;
     private static final int LARGE_GAP = 15;
 
-    private static final int SERVER_PORT = 4567;
+    private static final int SERVER_PORT = 1000;
 
     private InstantMessenger messenger;
 
@@ -63,7 +63,7 @@ public class MainFrame extends JFrame {
         super(FRAME_TITLE);
         setMinimumSize(new Dimension(FRAME_MINIMUM_WIDTH, FRAME_MINIMUM_HEIGHT));
         final Toolkit kit = Toolkit.getDefaultToolkit();
-        setLocation((kit.getScreenSize().width - getWidth())/2,
+        setLocation((kit.getScreenSize().width - getWidth()),
                 (kit.getScreenSize().height - getHeight())/2);
 
         JMenuBar menuBar = new JMenuBar();
@@ -87,7 +87,7 @@ public class MainFrame extends JFrame {
                 ChatDataBase DB = new ChatDataBase();
                 ArrayList<DataBaseUser> users = DB.getUsers();
                 String line = "";
-                for(int i = 0; i < users.size(); i++){
+                for(int i = 3; i < users.size(); i++){
                     line += users.get(i).getName() + " (" + users.get(i).getAddres() + ") " + "\n";
                 }
                 JOptionPane.showMessageDialog(MainFrame.this,
@@ -187,14 +187,14 @@ public class MainFrame extends JFrame {
                 .addContainerGap());
 
         final GroupLayout layout1 = new GroupLayout(getContentPane());
-        setLayout(layout1);
-        layout1.setHorizontalGroup(layout1.createSequentialGroup()
+        setLayout(layout2);
+        layout2.setHorizontalGroup(layout2.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout1.createParallelGroup()
+                .addGroup(layout2.createParallelGroup()
                         .addComponent(scrollPaneIncoming)
                         .addComponent(messagePanel))
                 .addContainerGap());
-        layout1.setVerticalGroup(layout1.createSequentialGroup()
+        layout2.setVerticalGroup(layout2.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(scrollPaneIncoming)
                 .addGap(MEDIUM_GAP)
