@@ -128,9 +128,9 @@ public class InstantMessenger {
 						final Socket socket = serverSocket.accept();
 						final DataInputStream in = new DataInputStream(
 								socket.getInputStream());
-						final String senderName = in.readUTF();
-						final String message = in.readUTF();
 						final String name = in.readUTF();
+						final String message = in.readUTF();
+						final String senderName = in.readUTF();
 						final String flag = in.readUTF();
 						socket.close();
 						final String address = ((InetSocketAddress) socket
@@ -138,12 +138,9 @@ public class InstantMessenger {
 								.getAddress()
 								.getHostAddress();
 						if (flag.equals("true")){
-							dialogFrame.getTextAreaIn().append(name + " (" + address + "): "
+							dialogFrame.getTextAreaIn().append(adress + " (" + address + "): "
 									+ message + "\n");
 
-						}else{
-							frame.getTextAreaIncoming().append(name + " (" + address + "): "
-									+ message + "\n");
 						}
 					}
 				} catch (IOException e) {
@@ -153,7 +150,7 @@ public class InstantMessenger {
 							JOptionPane.ERROR_MESSAGE);
 				}
 			}
-		}).start();
+		});
 	}
 
 }
