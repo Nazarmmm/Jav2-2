@@ -22,14 +22,14 @@ public class ChatDataBase {
 	
 	private void openData() {
 		try {
-			File file = new File("Data.txt");
+			File file = new File("Data.png");
 			BufferedReader reader = new BufferedReader(new FileReader(file));
 			String line = null;
 			while ((line = reader.readLine()) != null){
 				String name = line;
 				line = reader.readLine();
 				String addres = line;
-				users.add(new DataBaseUser(name, addres));			
+				users.add(new DataBaseUser(addres, name));			
 			}
 			reader.close();
 		}catch(Exception ex) {
@@ -54,6 +54,5 @@ public class ChatDataBase {
 				return user;
 			}
 		}
-		return null;
 	}
 }
